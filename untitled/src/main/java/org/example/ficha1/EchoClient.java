@@ -1,9 +1,9 @@
-package org.example;
+package org.example.ficha1;
 
 import java.io.*;
 import java.net.*;
 
-public class Client {
+public class EchoClient {
     public static void main(String[] args) throws IOException {
         // Declaração das variáveis do socket e fluxos de I/O
         Socket echoSocket = null;
@@ -11,17 +11,11 @@ public class Client {
         BufferedReader in = null;
 
         try {
-            // Conecta ao sv Echo q está a correr no localhost na porta 7
-            echoSocket = new Socket("localhost", 7);
+            echoSocket = new Socket("localhost", 7); // Conecta ao sv q está a correr no localhost na porta 7
+            out = new PrintWriter(echoSocket.getOutputStream(), true); // Prepara o PrintWriter pra enviar dados pra o sv
+            in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream())); // Prepara o BufferedReader pra ler os dados recebidos do sv
+            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in)); // BufferedReader pra ler a entrada do utilizador (a partir do terminal)
 
-            // Prepara o PrintWriter pra enviar dados pra o sv
-            out = new PrintWriter(echoSocket.getOutputStream(), true);
-
-            // Prepara o BufferedReader pra ler os dados recebidos do sv
-            in = new BufferedReader(new InputStreamReader(echoSocket.getInputStream()));
-
-            // BufferedReader pra ler a entrada do utilizador (a partir do terminal)
-            BufferedReader stdIn = new BufferedReader(new InputStreamReader(System.in));
             String userInput;
 
             // Lê as msgs do utilizador (a partir do terminal) e envia pra o sv
