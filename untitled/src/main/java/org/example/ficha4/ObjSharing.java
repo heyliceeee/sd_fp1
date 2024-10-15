@@ -31,8 +31,13 @@ public class ObjSharing {
             //}
 
             // Exibe todas as frases armazenadas no ArrayList até o momento
-            for (int k = 0; k < asFrases.size(); k++) {
-                System.out.println(asFrases.get(k));
+
+            // Sincronização do acesso ao ArrayList para garantir que a leitura
+            // não aconteça enquanto outra thread está modificando o ArrayList
+            synchronized (asFrases) {
+                for (int k = 0; k < asFrases.size(); k++) {
+                    System.out.println(asFrases.get(k));
+                }
             }
         }
     }

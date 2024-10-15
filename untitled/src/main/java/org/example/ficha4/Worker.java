@@ -38,8 +38,11 @@ public class Worker extends Thread {
         // Executa um loop 5 vezes
         for (int i = 0; i < 5; i++) {
             try {
-                // Adiciona uma frase ao ArrayList com o número da iteração e da thread
-                frases.add("Frase " + i + " da thread " + numero);
+                // Bloqueia o acesso ao ArrayList para garantir que apenas uma thread
+                // modifique o recurso de cada vez
+                synchronized (frases){
+                    frases.add("Frase " + i + " da thread " + numero); // Adiciona uma frase ao ArrayList com o número da iteração e da thread
+                }
 
                 // Pausa a execução da thread por 500ms + 10ms * i
                 //Thread.sleep(500 + i * 10);
