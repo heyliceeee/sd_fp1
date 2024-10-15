@@ -42,10 +42,10 @@ public class Worker extends Thread {
                 frases.add("Frase " + i + " da thread " + numero);
 
                 // Pausa a execução da thread por 500ms + 10ms * i
-                Thread.sleep(500 + i * 10);
+                //Thread.sleep(500 + i * 10);
             } catch (Exception ex) {
                 // Captura e ignora qualquer exceção
-                // (Seria interessante logar a exceção aqui, em vez de ignorá-la)
+                System.out.println(ex.getMessage());
             }
         }
     }

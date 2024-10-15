@@ -22,13 +22,13 @@ public class ObjSharing {
 
         // Loop para pausar a main thread e exibir as frases geradas
         for (int j = 0; j < 6; j++) {
-            try {
+            //try {
                 // Pausa a execução da thread principal por 1 segundo (1000ms)
-                Thread.sleep(1000);
-            } catch (Exception ex) {
+                //Thread.sleep(1000);
+            //} catch (Exception ex) {
                 // Captura e ignora qualquer exceção
-                // (Seria ideal registrar a exceção em vez de ignorá-la)
-            }
+                //System.out.println(ex.getMessage());
+            //}
 
             // Exibe todas as frases armazenadas no ArrayList até o momento
             for (int k = 0; k < asFrases.size(); k++) {
